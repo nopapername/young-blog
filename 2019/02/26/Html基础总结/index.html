@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false,"dimmer":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="总结一些看到的，学到的一些大佬们更深入的html理解，方便日后所用ps：对初学者挺有用的总结 web标准web标准介绍：  w3c：万维网联盟组织，用来制定web标准的机构（组织） web标准：制作网页要遵循的规范。 web标准规范的分类：结构标准、表现标准、行为标准。 ==结构==：html。==表现==：css。==行为==：JavaScript。  web标准总结：  结构标准：html就是">
+<meta name="keywords" content="html基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Html基础总结">
+<meta property="og:url" content="http://yoursite.com/2019/02/26/Html基础总结/index.html">
+<meta property="og:site_name" content="OY&#39;s Blog">
+<meta property="og:description" content="总结一些看到的，学到的一些大佬们更深入的html理解，方便日后所用ps：对初学者挺有用的总结 web标准web标准介绍：  w3c：万维网联盟组织，用来制定web标准的机构（组织） web标准：制作网页要遵循的规范。 web标准规范的分类：结构标准、表现标准、行为标准。 ==结构==：html。==表现==：css。==行为==：JavaScript。  web标准总结：  结构标准：html就是">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20181213132357731.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzM4ODg0NA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20181213133338604.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzM4ODg0NA==,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-02-26T07:44:42.599Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Html基础总结">
+<meta name="twitter:description" content="总结一些看到的，学到的一些大佬们更深入的html理解，方便日后所用ps：对初学者挺有用的总结 web标准web标准介绍：  w3c：万维网联盟组织，用来制定web标准的机构（组织） web标准：制作网页要遵循的规范。 web标准规范的分类：结构标准、表现标准、行为标准。 ==结构==：html。==表现==：css。==行为==：JavaScript。  web标准总结：  结构标准：html就是">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20181213132357731.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzM4ODg0NA==,size_16,color_FFFFFF,t_70">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/02/26/Html基础总结/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Html基础总结 | OY's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">OY's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">个人博客</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/26/Html基础总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="欧阳JH">
+      <meta itemprop="description" content="基于hexo构建的博客">
+      <meta itemprop="image" content="/images/introimg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="OY's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Html基础总结
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-26 15:44:07 / 修改时间：15:44:42" itemprop="dateCreated datePublished" datetime="2019-02-26T15:44:07+08:00">2019-02-26</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="总结一些看到的，学到的一些大佬们更深入的html理解，方便日后所用"><a href="#总结一些看到的，学到的一些大佬们更深入的html理解，方便日后所用" class="headerlink" title="总结一些看到的，学到的一些大佬们更深入的html理解，方便日后所用"></a>总结一些看到的，学到的一些大佬们更深入的html理解，方便日后所用</h2><pre><code>ps：对初学者挺有用的总结
+</code></pre><h3 id="web标准"><a href="#web标准" class="headerlink" title="web标准"></a>web标准</h3><p>web标准介绍：</p>
+<ul>
+<li>w3c：万维网联盟组织，用来制定web标准的机构（组织）</li>
+<li>web标准：制作网页要遵循的规范。</li>
+<li>web标准规范的分类：结构标准、表现标准、行为标准。</li>
+<li>==结构==：html。==表现==：css。==行为==：JavaScript。</li>
+</ul>
+<p>web标准总结：</p>
+<ul>
+<li>结构标准：html就是用来制作网页的。</li>
+<li>表现标准：css就是对网页进行美化的。</li>
+<li>行为标准：js就是让网页动起来，具有生命力的。</li>
+</ul>
+<h3 id="Html-相关"><a href="#Html-相关" class="headerlink" title="Html 相关"></a>Html 相关</h3><h5 id="html标签是分等级的，分为几种呢？"><a href="#html标签是分等级的，分为几种呢？" class="headerlink" title="==html标签是分等级的，分为几种呢？=="></a>==html标签是分等级的，分为几种呢？==</h5><p>两种：</p>
+<p><strong>文本级标签</strong>：p、span、a、b、i、u、em。文本级标签里只能放文字、图片、表单元素。（a标签里不能放a和input）</p>
+<p><strong>容器级标签</strong>：div、h系列、li、dt、dd。容器级标签里可以放置任何东西。</p>
+<p>（从学习p的第一天开始，就要死死记住：p标签是一个文本级标签，p里面只能放文字、图片、表单元素。其他的一律不能放。）</p>
+<h5 id="为什么使用-lt-Doctype-html-gt"><a href="#为什么使用-lt-Doctype-html-gt" class="headerlink" title="==为什么使用 &lt;!Doctype html&gt; ?=="></a>==为什么使用 <strong>&lt;!Doctype html&gt;</strong> ?==</h5><p><strong>&lt;!doctype html&gt;说明是采用html5文档类型编写网页的标准声明,原先很长,现在是这个简洁形式,主流浏览器现在都认识这个声明。</strong><br>（这一行一般位于起始，是文档声明头，DocType Declaration，简称DTD。此标签可告知浏览器文档使用哪种 HTML 或 XHTML 规范。）</p>
+<p><em>以下版本声明仅供了解（用的少了，目前主流浏览器都支持html5）</em></p>
+<blockquote>
+<p><strong>HTML 4.01 Strict</strong><br>该 DTD 包含所有 HTML 元素和属性，但不包括展示性的和弃用的元素（比如 font）。不允许框架集（Framesets）。<br>&lt;!doctype HTML PUBLIC “-//W3C//DTD HTML 4.01//EN” “<a href="http://www.w3.org/TR/html4/strict.dtd&quot;&gt;" target="_blank" rel="noopener">http://www.w3.org/TR/html4/strict.dtd&quot;&gt;</a></p>
+</blockquote>
+<blockquote>
+<p><strong>HTML 4.01 Transitional</strong><br>该 DTD 包含所有 HTML 元素和属性，包括展示性的和弃用的元素（比如 font）。不允许框架集（Framesets）。<br>&lt;!doctype HTML PUBLIC “-//W3C//DTD HTML 4.01 Transitional//EN”<br>“<a href="http://www.w3.org/TR/html4/loose.dtd&quot;&gt;" target="_blank" rel="noopener">http://www.w3.org/TR/html4/loose.dtd&quot;&gt;</a></p>
+</blockquote>
+<blockquote>
+<p><strong>HTML 4.01 Frameset</strong><br>该 DTD 等同于 HTML 4.01 Transitional，但允许框架集内容。<br>&lt;!doctype HTML PUBLIC “-//W3C//DTD HTML 4.01 Frameset//EN”<br>“<a href="http://www.w3.org/TR/html4/frameset.dtd&quot;&gt;" target="_blank" rel="noopener">http://www.w3.org/TR/html4/frameset.dtd&quot;&gt;</a></p>
+</blockquote>
+<blockquote>
+<p>XHTML 1.0 Strict<br>该 DTD 包含所有 HTML 元素和属性，但不包括展示性的和弃用的元素（比如 font）。不允许框架集（Framesets）。必须以格式正确的 XML 来编写标记。<br>&lt;!doctype html PUBLIC “-//W3C//DTD XHTML 1.0 Strict//EN”<br>“<a href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;" target="_blank" rel="noopener">http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;</a></p>
+</blockquote>
+<blockquote>
+<p>XHTML 1.0 Transitional<br>该 DTD 包含所有 HTML 元素和属性，包括展示性的和弃用的元素（比如 font）。不允许框架集（Framesets）。必须以格式正确的 XML 来编写标记。<br>&lt;!doctype html PUBLIC “-//W3C//DTD XHTML 1.0 Transitional//EN” “<br><a href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;" target="_blank" rel="noopener">http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;</a></p>
+</blockquote>
+<blockquote>
+<p>XHTML 1.0 Frameset<br>该 DTD 等同于 XHTML 1.0 Transitional，但允许框架集内容。<br>&lt;!doctype html PUBLIC “-//W3C//DTD XHTML 1.0 Frameset//EN”<br>“<a href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd&quot;&gt;" target="_blank" rel="noopener">http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd&quot;&gt;</a></p>
+</blockquote>
+<blockquote>
+<p>XHTML 1.1<br>该 DTD 等同于 XHTML 1.0 Strict，但允许添加模型（例如提供对东亚语系的 ruby 支持）。<br>&lt;!doctype html PUBLIC “-//W3C//DTD XHTML 1.1//EN” “<a href="http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&quot;&gt;" target="_blank" rel="noopener">http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&quot;&gt;</a></p>
+</blockquote>
+<h5 id="为什么使用-lt-meta-charset-”UTF-8”-gt"><a href="#为什么使用-lt-meta-charset-”UTF-8”-gt" class="headerlink" title="==为什么使用 &lt;meta charset=”UTF-8”&gt; ?=="></a>==为什么使用 &lt;<strong>meta charset=”UTF-8”</strong>&gt; ?==</h5><p><strong>是为了用meta提供网页所使用的字符集编码信息</strong>（不理解请看下面）</p>
+<p>要回答这个问题我们先了解一下计算机的编码：<br> 计算机，不能直接存储文字，存储的是编码。<br> 计算机只能处理二进制的数据，其它数据，比如：0-9、a-z、A-Z，这些字符，我们定义一套规则来表示。假如：A用110表示，B用111表示等。</p>
+<blockquote>
+<p><strong>ASCII码：</strong><br>美国发布的，用1个字节(8位二进制)来表示一个字符，共可以表示2^8=256个字符。<br>美国的国家语言是英语，只要能表示0-9、a-z、A-Z、特殊符号。</p>
+</blockquote>
+<blockquote>
+<p><strong>ANSI编码：</strong><br>每个国家为了显示本国的语言，都对ASCII码进行了扩展。用2个字节(16位二进制)来表示一个汉字，共可以表示2^16＝65536个汉字。例如：<br>中国的ANSI编码是GB2312编码(简体)，对6763汉字进行编码，含600多特殊字符。另外还有GBK(简体)。<br>日本的ANSI编码是JIS编码。 台湾的ANSI编码是BIG5编码（繁体）。</p>
+</blockquote>
+<blockquote>
+<p><strong>GBK：</strong><br>对GB2312进行了扩展，用来显示罕见的、古汉语的汉字。现在已经收录了2.1万左右。并提供了1890个汉字码位。K的含义就是“扩展”。</p>
+</blockquote>
+<blockquote>
+<p><strong>Unicode编码(统一编码)：</strong><br>用4个字节(32位二进制)来表示一个字符，想法不错，但效率太低。例如，字母A用ASCII表示的话一个字节就够，可用Unicode编码的话，得用4个字节表示，造成了空间的极大浪费。A的Unicode编码是0000<br>0000 0000 0000 0000 0000 0100 0000</p>
+</blockquote>
+<blockquote>
+<p><strong>UTF-8(Unicode Transform Format)编码：</strong><br>根据字符的不同，选择其编码的长度。比如：一个字符A用1个字节表示，一个汉字用2个字节表示。</p>
+</blockquote>
+<p> ==所以开发中，都用UTF-8编码，准没错。==</p>
+<blockquote>
+<p>中文能够使用的字符集两种：<br>第一种：UTF-8。UTF-8是国际通用字库，里面涵盖了所有地球上所有人类的语言文字，比如阿拉伯文、汉语、鸟语……<br>第二种：GBK（对GB2312进行了扩展）。gb2312<br>是国标，是中国的字库，里面仅涵盖了汉字和一些常用外文，比如日文片假名，和常见的符号。<br>字库规模： UTF-8（字全） &gt; gb2312（只有汉字）</p>
+</blockquote>
+<blockquote>
+<p><strong>重点1：避免乱码</strong><br>我们用meta标签声明的当前这个html文档的字库，一定要和保存的文件编码类型一样，否则乱码！（重点）。<br>当我们不设置的时候，sublime默认类型就是UTF-8。而一旦更改为gb2312的时候，就一定要记得设置一下sublime的保存类型：<br>文件→ set File Encoding to → Chinese Simplified(GBK)。</p>
+</blockquote>
+<blockquote>
+<p><strong>重点2：UTF-8和gb2312的比较</strong><br>保存大小：UTF-8（更臃肿、加载更慢） &gt; gb2312 （更小巧，加载更快）</p>
+</blockquote>
+<blockquote>
+<p>==总结：==<br>UTF-8：字多，有各种国家的语言，但是保存尺寸大，文件臃肿； gb2312：字少，只用中文和少数外语和符号，但是尺寸小，文件小巧。<br>==<strong>列出2个使用情形：</strong>==<br>**1）你们公司是做日本动漫的，经常出现一些日语动漫的名字，网页要使用UTF-8。如果用gb2312将无法显示日语。<br> 2）你们公司就是中文网页，极度的追求网页的显示速度，要使用gb2312。如果使用UTF-8将每个汉字多一个byte，所以5000个汉字，多5kb。<br>一些大佬亲测：<br>qq网、网易、搜狐都是使用gb2312。这些公司，都追求显示速度。 新华网藏语频道，使用的是UTF-8，保证字符集的数量。<br>因为浏览器是通过meta来看网页是使用什么字符集的。比如你保存的时候，meta写的和声明的不匹配，那么浏览器就是乱码。</p>
+</blockquote>
+<h5 id="那么mate标签还有什么用处？"><a href="#那么mate标签还有什么用处？" class="headerlink" title="==那么mate标签还有什么用处？=="></a>==那么mate标签还有什么用处？==</h5><p>1.定义使用哪种字符集（上面已经说过了）<br><strong>2.定义“关键词”</strong><br>例子：</p>
+<blockquote>
+<p>&lt;<strong>meta name=”Keywords” content=”网易,邮箱,游戏,新闻,体育,娱乐,女性,亚运,论坛,短信” /</strong>&gt;</p>
+</blockquote>
+<p>这些关键词，就是告诉搜索引擎，这个网页是干嘛的，能够提高搜索命中率。让别人能够找到你，搜索到你。</p>
+<p><strong>3.定义“页面描述”</strong><br>例子：</p>
+<blockquote>
+<p>&lt;<strong>meta name=”Description” content=”网易是中国领先的互联网技术公司，为用户提供免费邮箱、游戏、搜索引擎服务，开设新闻、娱乐、体育等30多个内容频道，及博客、视频、论坛等互动交流，网聚人的力量。” /</strong>&gt;</p>
+</blockquote>
+<p>name即“名字”，content即“内容”。<br>只要设置Description页面描述，那么百度搜索结果，就能够显示这些语句，这个技术叫做SEO（search engine optimization，搜索引擎优化）。</p>
+<p><strong>效果如下：</strong><br><img src="https://img-blog.csdnimg.cn/20181213132357731.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzM4ODg0NA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h5 id="一些常用到的转义字符？"><a href="#一些常用到的转义字符？" class="headerlink" title="==一些常用到的转义字符？=="></a>==一些常用到的转义字符？==</h5><p>常用到的特殊字符有：空格（&amp;nbsp；）、小于（&amp;lt；）、大于（&amp;gt；）、版权（&amp;copy；）。</p>
+<p>来一张表格，方便需要的时候查询：<br><img src="https://img-blog.csdnimg.cn/20181213133338604.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzM4ODg0NA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h4 id="看到的一些面试题，很基础但很有意义："><a href="#看到的一些面试题，很基础但很有意义：" class="headerlink" title="==看到的一些面试题，很基础但很有意义：=="></a>==看到的一些面试题，很基础但很有意义：==</h4><p><strong>h1标签有什么作用？</strong><br>正确答案：给文本增加主标题的语义。<br>错误答案：给文字加粗、加黑、变大。</p>
+<p><strong>网页的head标签里面，表示的是页面的配置，有什么配置？</strong><br>答：字符集、关键词、页面描述、页面标题。（今后我们还能看见一些其他的配置：IE适配、视口、iPhone小图标等等）</p>
+<h3 id="以上内容借鉴至"><a href="#以上内容借鉴至" class="headerlink" title="以上内容借鉴至"></a>以上内容借鉴至</h3><p>百度&amp;菜鸟教程<br>&amp;gibhub：</p>
+<blockquote>
+<p><a href="https://github.com/smyhvae" target="_blank" rel="noopener">https://github.com/smyhvae</a></p>
+</blockquote>
+<pre><code>ps：此篇博持续更新！有我觉得有用的东西就记录在此。
+</code></pre>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持分享(美文刊，技术刊，感悟刊)，您的支持将鼓励我继续创作</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById(&quot;QR&quot;); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="欧阳JH 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="欧阳JH 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/html基础/" rel="tag"><i class="fa fa-tag"></i> html基础</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/26/html中列表元素的一些应用/" rel="next" title="html中列表元素的一些应用">
+                <i class="fa fa-chevron-left"></i> html中列表元素的一些应用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/26/学生管理表单验证练手（正则表达式方式）/" rel="prev" title="学生管理表单验证练手（正则表达式方式）">
+                学生管理表单验证练手（正则表达式方式） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/introimg.jpg" alt="欧阳JH">
+            
+              <p class="site-author-name" itemprop="name">欧阳JH</p>
+              <p class="site-description motion-element" itemprop="description">基于hexo构建的博客</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/nopapername" title="GitHub &rarr; https://github.com/nopapername" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:1019825864@qq.com" title="E-Mail &rarr; mailto:1019825864@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/u/6020961867?topnav=1&wvr=6&topsug=1" title="Weibo &rarr; https://weibo.com/u/6020961867?topnav=1&wvr=6&topsug=1" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://nopapername.github.io/oyresume.github.io/" title="https://nopapername.github.io/oyresume.github.io/" rel="noopener" target="_blank">myresume</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#总结一些看到的，学到的一些大佬们更深入的html理解，方便日后所用"><span class="nav-number">1.</span> <span class="nav-text">总结一些看到的，学到的一些大佬们更深入的html理解，方便日后所用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#web标准"><span class="nav-number">1.1.</span> <span class="nav-text">web标准</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Html-相关"><span class="nav-number">1.2.</span> <span class="nav-text">Html 相关</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#html标签是分等级的，分为几种呢？"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">==html标签是分等级的，分为几种呢？==</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#为什么使用-lt-Doctype-html-gt"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">==为什么使用 &lt;!Doctype html&gt; ?==</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#为什么使用-lt-meta-charset-”UTF-8”-gt"><span class="nav-number">1.2.0.3.</span> <span class="nav-text">==为什么使用 &lt;meta charset=”UTF-8”&gt; ?==</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#那么mate标签还有什么用处？"><span class="nav-number">1.2.0.4.</span> <span class="nav-text">==那么mate标签还有什么用处？==</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#一些常用到的转义字符？"><span class="nav-number">1.2.0.5.</span> <span class="nav-text">==一些常用到的转义字符？==</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#看到的一些面试题，很基础但很有意义："><span class="nav-number">1.2.1.</span> <span class="nav-text">==看到的一些面试题，很基础但很有意义：==</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以上内容借鉴至"><span class="nav-number">1.3.</span> <span class="nav-text">以上内容借鉴至</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">欧阳JH</span>
+
+  
+
+  
+</div>
+
+<!-- 
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.0.0</div>
+ -->
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+  
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
