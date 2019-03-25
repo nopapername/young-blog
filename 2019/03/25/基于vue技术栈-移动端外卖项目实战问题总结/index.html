@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/nopapername.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/nopapername.github.io/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/nopapername.github.io/images/apple-touch-icon-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/nopapername.github.io/images/favicon.ico?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/nopapername.github.io/images/favicon.ico?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/nopapername.github.io/images/logo.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/nopapername.github.io/',
+    scheme: 'Muse',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false,"dimmer":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="前言为了深入学习vue全家桶及前后台交互技术，包括vuex，vue-router，ajax等，模仿某平台写一个简化版的移动端项目出来 技术栈vue2 + vuex + vue-router + webpack + ES6/7 + axios + stylus + mint-ui + mock模拟数据 项目链接及预览点此进入github  此项目github地址： https://github.co">
+<meta name="keywords" content="vue实战">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于vue技术栈-移动端外卖项目实战问题总结">
+<meta property="og:url" content="https://nopapername.github.io/2019/03/25/基于vue技术栈-移动端外卖项目实战问题总结/index.html">
+<meta property="og:site_name" content="OY&#39;s Blog">
+<meta property="og:description" content="前言为了深入学习vue全家桶及前后台交互技术，包括vuex，vue-router，ajax等，模仿某平台写一个简化版的移动端项目出来 技术栈vue2 + vuex + vue-router + webpack + ES6/7 + axios + stylus + mint-ui + mock模拟数据 项目链接及预览点此进入github  此项目github地址： https://github.co">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-25T01:57:25.286Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于vue技术栈-移动端外卖项目实战问题总结">
+<meta name="twitter:description" content="前言为了深入学习vue全家桶及前后台交互技术，包括vuex，vue-router，ajax等，模仿某平台写一个简化版的移动端项目出来 技术栈vue2 + vuex + vue-router + webpack + ES6/7 + axios + stylus + mint-ui + mock模拟数据 项目链接及预览点此进入github  此项目github地址： https://github.co">
+
+
+
+
+
+
+  <link rel="canonical" href="https://nopapername.github.io/2019/03/25/基于vue技术栈-移动端外卖项目实战问题总结/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>基于vue技术栈-移动端外卖项目实战问题总结 | OY's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/nopapername.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">OY's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">个人博客</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/nopapername.github.io/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/nopapername.github.io/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/nopapername.github.io/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/nopapername.github.io/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/nopapername.github.io/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://nopapername.github.io/nopapername.github.io/2019/03/25/基于vue技术栈-移动端外卖项目实战问题总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="欧阳JH">
+      <meta itemprop="description" content="基于hexo构建的博客">
+      <meta itemprop="image" content="/nopapername.github.io/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="OY's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">基于vue技术栈-移动端外卖项目实战问题总结
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-25 09:56:46 / 修改时间：09:57:25" itemprop="dateCreated datePublished" datetime="2019-03-25T09:56:46+08:00">2019-03-25</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/nopapername.github.io/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>为了深入学习vue全家桶及前后台交互技术，包括vuex，vue-router，ajax等，模仿某平台写一个简化版的移动端项目出来</p>
+<h2 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h2><p>vue2 + vuex + vue-router + webpack + ES6/7 + axios + stylus + mint-ui + mock模拟数据</p>
+<h2 id="项目链接及预览"><a href="#项目链接及预览" class="headerlink" title="项目链接及预览"></a>项目链接及预览</h2><p><a href="https://github.com/nopapername/vue-oyshop-project" target="_blank" rel="noopener">点此进入github</a></p>
+<blockquote>
+<p>此项目github地址： <a href="https://github.com/nopapername/vue-oyshop-project" target="_blank" rel="noopener">https://github.com/nopapername/vue-oyshop-project</a></p>
+</blockquote>
+<h2 id="关于接口数据"><a href="#关于接口数据" class="headerlink" title="关于接口数据"></a>关于接口数据</h2><p>在github上找的别人做好的一个超大型外卖平台项目api文档里的其中几项<br><a href="https://github.com/bailicangdu/node-elm/blob/master/API.md" target="_blank" rel="noopener">引用大佬的api接口文档地址</a><br>用到以下接口：<br><a href="#jump1">1、获取城市列表</a><br><a href="#jump2">2、根据经纬度详细定位</a><br><a href="#jump3">3、食品分类列表</a><br><a href="#jump4">4、获取商铺列表</a><br><a href="#jump5">5、获取验证码</a><br><a href="#jump6">6、获取用户信息</a><br><a href="#jump7">7、登录</a><br><a href="#jump8">8、退出</a></p>
+<h2 id="遇到的一些问题"><a href="#遇到的一些问题" class="headerlink" title="遇到的一些问题"></a>遇到的一些问题</h2><ul>
+<li><p>在组件上绑定点击事件@click=”＄router.back()”无法返回上一页？<br>解决办法：组件上绑定事件时需要加上native修饰符<br>（即：@click.native=”$router.back()）</p>
+</li>
+<li><p>移动端页面的响应性如何解决？<br>解决办法：使用媒体查询器和em，rem进行适配。<br>（即：媒体查询适配范围自行百度）</p>
+</li>
+<li><p>跨域发送ajax请求的方法？<br>解决办法：配置webpack-dev-server，代理某一个路径到目标路径，同时更改源和重写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// 修改config里的配置文件index.js中以下部分</span><br><span class="line">// Paths</span><br><span class="line">    assetsSubDirectory: &apos;static&apos;,</span><br><span class="line">    assetsPublicPath: &apos;/&apos;,</span><br><span class="line">    proxyTable: &#123;</span><br><span class="line">      &apos;/api&apos;: &#123; // 匹配所有以&apos;/api&apos;开头的请求路径</span><br><span class="line">        target: &apos;https://elm.cangdu.org&apos;, // 代理目标的基础路径</span><br><span class="line">        changeOrigin: true, // 支持跨域</span><br><span class="line">        pathRewrite: &#123; // 重写路径：删除路径中开头的&apos;/api&apos;</span><br><span class="line">          &apos;^/api&apos;: &apos;&apos;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如何使用从后台获取了数据更新后的state中的数据再次请求数据（此项目中用在使用获得的经纬度再来确定具体位置以及用在界面更新之后再创建swiper对象）？<br>解决办法： 使用watch监听并利用vue提供的方法this.＄nextTick(() =&gt; {})来等待数据更新后再进行后台请求。第二种方法是使用定时器设置一定的间隔时间再请求数据。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">watch: &#123;</span><br><span class="line">    cityPosition (value) &#123;</span><br><span class="line">      this.$nextTick(() =&gt; &#123;</span><br><span class="line">        this.getCityDetailedInfo()</span><br><span class="line">        this.getShopList()</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>手机短信验证码登录时手机号格式输入正确 发送验证码按钮亮起，点击后显示已发送并倒计时 功能？<br>解决办法：使用计算属性返回判断手机号格式的正则表达式的布尔值来进行动态添加类，并添加点击事件方法设置定时器实现倒计时效果。<br>html代码</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;section class=&quot;phone_num&quot;&gt;</span><br><span class="line">            &lt;input type=&quot;tel&quot; placeholder=&quot;手机号&quot; class=&quot;num_input&quot; maxlength=&quot;11&quot; v-model=&quot;phone&quot;&gt;</span><br><span class="line">            &lt;button class=&quot;send_verification&quot; :disabled=&quot;!rightPhone&quot; :class=&quot;&#123;right_phone:rightPhone,computed_time:computedFlag&#125;&quot; @click.prevent=&quot;getCode&quot;&gt;</span><br><span class="line">              &#123;&#123;computeTime ? `已发送$&#123;computeTime&#125;s`:&apos;发送验证码&apos;&#125;&#125;</span><br><span class="line">            &lt;/button&gt;</span><br><span class="line">          &lt;/section&gt;</span><br></pre></td></tr></table></figure>
+<p>js中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">data () &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    loginWay: true, // 切换登录方式，true显示当前登录界面</span><br><span class="line">    computeTime: 0, // 验证码倒计时</span><br><span class="line">    computedFlag: false, // 计数标志，当计数时切换到不可点击的按钮颜色</span><br><span class="line">    phone: &apos;&apos; // 手机号</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line">computed: &#123;</span><br><span class="line">  rightPhone () &#123;</span><br><span class="line">    return /^1[345789]\d&#123;9&#125;$/.test(this.phone)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line">methods: &#123;</span><br><span class="line">  getCode () &#123;</span><br><span class="line">    if (!this.computeTime) &#123;</span><br><span class="line">      this.computedFlag = true</span><br><span class="line">      this.computeTime = 30</span><br><span class="line">      const computedNum = setInterval(() =&gt; &#123;</span><br><span class="line">        this.computeTime -= 1</span><br><span class="line">        if (this.computeTime === 0) &#123;</span><br><span class="line">          clearInterval(computedNum)</span><br><span class="line">          this.computedFlag = false</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;, 1000)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>按需引入mint-ui 的一些坑点？<br>网上搜集到了一篇知识点博客 <a href="https://blog.csdn.net/zgh0711/article/details/79700185" target="_blank" rel="noopener">点击进入</a></p>
+</li>
+<li><p>发ajax请求在调试器network中出现错误404一些原因？<br>1 请求的路径是不是对<br>2 代理是否生效（配置和重启）<br>3 服务器应用是否运行</p>
+</li>
+<li><p>vuex报错: [vuex] Expects string as the type, but found object 什么原因？？？<br>解决：actions中代码写错了。仔细检查！！！(百度了下mutation和mutation-types中写错也有此类型错误提示)</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 错误的</span><br><span class="line">async getCaptchas (&#123;commit&#125;) &#123;</span><br><span class="line">    const captchas = await reqCaptchas()</span><br><span class="line">    commit([RECEIVE_CAPTCHAS], &#123;captchas&#125;)</span><br><span class="line">  &#125;</span><br><span class="line"> // 正确的</span><br><span class="line"> async getCaptchas (&#123;commit&#125;) &#123;</span><br><span class="line">    const captchas = await reqCaptchas()</span><br><span class="line">    commit(RECEIVE_CAPTCHAS, &#123;captchas&#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="接口列表："><a href="#接口列表：" class="headerlink" title="接口列表："></a>接口列表：</h1><div id="jump1"><br><br>### 1、获取城市列表<br><br>#### 请求URL:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://elm.cangdu.org/v1/cities</span><br></pre></td></tr></table></figure><br><br>#### 示例：<br> <a href="https://elm.cangdu.org/v1/cities?type=guess" target="_blank" rel="noopener">https://elm.cangdu.org/v1/cities?type=guess</a><br><br>#### 请求方式:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET</span><br></pre></td></tr></table></figure><br><br>#### 参数类型：query<br><br>|参数|是否必选|类型|说明|<br>|:—–|:——-:|:—–|:—–|<br>|type      |Y       |string  |guess：定位城市，  hot：热门城市， group：所有城市 |<br><br>#### 返回示例：<br><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  id: <span class="number">1</span>,</span><br><span class="line">  name: <span class="string">"上海"</span>,</span><br><span class="line">  abbr: <span class="string">"SH"</span>,</span><br><span class="line">  area_code: <span class="string">"021"</span>,</span><br><span class="line">  sort: <span class="number">1</span>,</span><br><span class="line">  latitude: <span class="number">31.23037</span>,</span><br><span class="line">  longitude: <span class="number">121.473701</span>,</span><br><span class="line">  is_map: <span class="literal">true</span>,</span><br><span class="line">  pinyin: <span class="string">"shanghai"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><br></div>
+
+<div id="jump2"><br><br>### 2、根据经纬度详细定位<br><br>#### 请求URL：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://elm.cangdu.org/v2/pois/:geohash</span><br></pre></td></tr></table></figure><br><br>#### 示例：<br><a href="https://elm.cangdu.org/v2/pois/31.22967,121.4762" target="_blank" rel="noopener">https://elm.cangdu.org/v2/pois/31.22967,121.4762</a><br><br>#### 请求方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET</span><br></pre></td></tr></table></figure><br><br>#### 参数类型：param<br><br>|参数|是否必选|类型|说明|<br>|:—–|:——-:|:—–|:—–|<br>|geohash      |Y       |string   |经纬度 |<br><br>#### 返回示例：<br><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  address: <span class="string">"上海市黄浦区西藏中路"</span>,</span><br><span class="line">  city: <span class="string">"上海市"</span>,</span><br><span class="line">  geohash: <span class="string">"31.22967,121.4762"</span>,</span><br><span class="line">  latitude: <span class="string">"31.22967"</span>,</span><br><span class="line">  longitude: <span class="string">"121.4762"</span>,</span><br><span class="line">  name: <span class="string">"黄浦区上海人民广场"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><br></div>
+
+<div id="jump3"><br><br>### 3、食品分类列表<br><br>#### 请求URL：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://elm.cangdu.org/v2/index_entry</span><br></pre></td></tr></table></figure><br><br>#### 示例：<br><a href="https://elm.cangdu.org/v2/index_entry" target="_blank" rel="noopener">https://elm.cangdu.org/v2/index_entry</a><br><br>#### 请求方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET</span><br></pre></td></tr></table></figure><br><br>#### 参数类型：<br><br>|参数|是否必选|类型|说明|<br>|:—–|:——-:|:—–|:—–|<br><br>#### 返回示例：<br><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    id: <span class="number">1</span>,</span><br><span class="line">    is_in_serving: <span class="literal">true</span>,</span><br><span class="line">    description: <span class="string">"0元早餐0起送，每天都有新花样。"</span>,</span><br><span class="line">    title: <span class="string">"预订早餐"</span>,</span><br><span class="line">    link: <span class="string">""</span>,</span><br><span class="line">    image_url: <span class="string">"/d/49/7757ff22e8ab28e7dfa5f7e2c2692jpeg.jpeg"</span>,</span><br><span class="line">    icon_url: <span class="string">""</span>,</span><br><span class="line">    title_color: <span class="string">""</span>,</span><br><span class="line">    __v: <span class="number">0</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    id: <span class="number">65</span>,</span><br><span class="line">    is_in_serving: <span class="literal">true</span>,</span><br><span class="line">    description: <span class="string">""</span>,</span><br><span class="line">    title: <span class="string">"土豪推荐"</span>,</span><br><span class="line">    image_url: <span class="string">"/d/49/7757ff22e8ab28e7dfa5f7e2c2692jpeg.jpeg"</span>,</span><br><span class="line">    link: <span class="string">""</span>,</span><br><span class="line">    icon_url: <span class="string">""</span>,</span><br><span class="line">    title_color: <span class="string">""</span>,</span><br><span class="line">    __v: <span class="number">0</span></span><br><span class="line">  &#125;,</span><br><span class="line">  ... 共n条数据</span><br><span class="line">]</span><br></pre></td></tr></table></figure><br><br></div>
+
+<div id="jump4"><br><br>### 4、获取商铺列表<br><br>#### 请求URL：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://elm.cangdu.org/shopping/restaurants</span><br></pre></td></tr></table></figure><br><br>#### 示例：<br><a href="https://elm.cangdu.org/shopping/restaurants?latitude=31.22967&amp;longitude=121.4762" target="_blank" rel="noopener">https://elm.cangdu.org/shopping/restaurants?latitude=31.22967&amp;longitude=121.4762</a><br><br>#### 请求方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET</span><br></pre></td></tr></table></figure><br><br>#### 参数类型：query<br><br>|参数|是否必选|类型|说明|<br>|:—–|:——-:|:—–|:—–|<br>|latitude      |Y       |string  |纬度|<br>|longitude      |Y       |string  |经度|<br>|offset      |N       |int |跳过多少条数据，默认0|<br>|limit      |N      |int |请求数据的数量，默认20|<br>|restaurant_category_id      |N      |int |餐馆分类id|<br>|order_by      |N       |int |排序方式id： 1：起送价、2：配送速度、3:评分、4: 智能排序(默认)、5:距离最近、6:销量最高|<br>|delivery_mode      |N      |array |配送方式id|<br>|support_ids      |N      |array |餐馆支持特权的id|<br>|restaurant_category_ids      |N      |array |餐馆分类id|<br><br><br>#### 返回示例：<br><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="string">"肯德基"</span>,</span><br><span class="line">    address: <span class="string">"上海市宝山区淞宝路155弄18号星月国际商务广场1层"</span>,</span><br><span class="line">    id: <span class="number">1</span>,</span><br><span class="line">    latitude: <span class="number">31.38098</span>,</span><br><span class="line">    longitude: <span class="number">121.50146</span>,</span><br><span class="line">    location: [</span><br><span class="line">      <span class="number">121.50146</span>,</span><br><span class="line">      <span class="number">31.38098</span></span><br><span class="line">    ],</span><br><span class="line">    phone: <span class="string">"1232313124324"</span>,</span><br><span class="line">    category: <span class="string">"快餐便当/简餐"</span>,</span><br><span class="line">    supports: [</span><br><span class="line">      &#123;</span><br><span class="line">        description: <span class="string">"已加入“外卖保”计划，食品安全有保障"</span>,</span><br><span class="line">        icon_color: <span class="string">"999999"</span>,</span><br><span class="line">        icon_name: <span class="string">"保"</span>,</span><br><span class="line">        id: <span class="number">7</span>,</span><br><span class="line">        name: <span class="string">"外卖保"</span>,</span><br><span class="line">        _id: <span class="string">"591bec73c2bbc84a6328a1e5"</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        description: <span class="string">"准时必达，超时秒赔"</span>,</span><br><span class="line">        icon_color: <span class="string">"57A9FF"</span>,</span><br><span class="line">        icon_name: <span class="string">"准"</span>,</span><br><span class="line">        id: <span class="number">9</span>,</span><br><span class="line">        name: <span class="string">"准时达"</span>,</span><br><span class="line">        _id: <span class="string">"591bec73c2bbc84a6328a1e4"</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        description: <span class="string">"该商家支持开发票，请在下单时填写好发票抬头"</span>,</span><br><span class="line">        icon_color: <span class="string">"999999"</span>,</span><br><span class="line">        icon_name: <span class="string">"票"</span>,</span><br><span class="line">        id: <span class="number">4</span>,</span><br><span class="line">        name: <span class="string">"开发票"</span>,</span><br><span class="line">        _id: <span class="string">"591bec73c2bbc84a6328a1e3"</span></span><br><span class="line">      &#125;</span><br><span class="line">    ],</span><br><span class="line">    status: <span class="number">0</span>,</span><br><span class="line">    recent_order_num: <span class="number">615</span>,</span><br><span class="line">    rating_count: <span class="number">389</span>,</span><br><span class="line">    rating: <span class="number">1.6</span>,</span><br><span class="line">    promotion_info: <span class="string">"他依然有人有人有人有人有人"</span>,</span><br><span class="line">    piecewise_agent_fee: &#123;</span><br><span class="line">      tips: <span class="string">"配送费约¥5"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    opening_hours: [</span><br><span class="line">      <span class="string">"8:30/20:30"</span></span><br><span class="line">    ],</span><br><span class="line">    license: &#123;</span><br><span class="line">      catering_service_license_image: <span class="string">""</span>,</span><br><span class="line">      business_license_image: <span class="string">""</span></span><br><span class="line">    &#125;,</span><br><span class="line">    is_new: <span class="literal">true</span>,</span><br><span class="line">    is_premium: <span class="literal">true</span>,</span><br><span class="line">    image_path: <span class="string">"/img/shop/15c1513a00615.jpg"</span>,</span><br><span class="line">    identification: &#123;</span><br><span class="line">      registered_number: <span class="string">""</span>,</span><br><span class="line">      registered_address: <span class="string">""</span>,</span><br><span class="line">      operation_period: <span class="string">""</span>,</span><br><span class="line">      licenses_scope: <span class="string">""</span>,</span><br><span class="line">      licenses_number: <span class="string">""</span>,</span><br><span class="line">      licenses_date: <span class="string">""</span>,</span><br><span class="line">      legal_person: <span class="string">""</span>,</span><br><span class="line">      identificate_date: <span class="literal">null</span>,</span><br><span class="line">      identificate_agency: <span class="string">""</span>,</span><br><span class="line">      company_name: <span class="string">""</span></span><br><span class="line">    &#125;,</span><br><span class="line">    float_minimum_order_amount: <span class="number">20</span>,</span><br><span class="line">    float_delivery_fee: <span class="number">5</span>,</span><br><span class="line">    distance: <span class="string">"19.5公里"</span>,</span><br><span class="line">    order_lead_time: <span class="string">"40分钟"</span>,</span><br><span class="line">    description: <span class="string">"好吃的"</span>,</span><br><span class="line">    delivery_mode: &#123;</span><br><span class="line">      color: <span class="string">"57A9FF"</span>,</span><br><span class="line">      id: <span class="number">1</span>,</span><br><span class="line">      is_solid: <span class="literal">true</span>,</span><br><span class="line">      text: <span class="string">"蜂鸟专送"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    activities: [</span><br><span class="line">      &#123;</span><br><span class="line">        icon_name: <span class="string">"减"</span>,</span><br><span class="line">        name: <span class="string">"满减优惠"</span>,</span><br><span class="line">        description: <span class="string">"满30减5，满60减8"</span>,</span><br><span class="line">        icon_color: <span class="string">"f07373"</span>,</span><br><span class="line">        id: <span class="number">1</span>,</span><br><span class="line">        _id: <span class="string">"591bec73c2bbc84a6328a1e7"</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        icon_name: <span class="string">"特"</span>,</span><br><span class="line">        name: <span class="string">"优惠大酬宾"</span>,</span><br><span class="line">        description: <span class="string">"是对冯绍峰的上市房地产"</span>,</span><br><span class="line">        icon_color: <span class="string">"EDC123"</span>,</span><br><span class="line">        id: <span class="number">2</span>,</span><br><span class="line">        _id: <span class="string">"591bec73c2bbc84a6328a1e6"</span></span><br><span class="line">      &#125;</span><br><span class="line">    ],</span><br><span class="line">  &#125;</span><br><span class="line">  ... 共<span class="number">20</span>条数据</span><br><span class="line">]</span><br></pre></td></tr></table></figure><br><br></div>
+
+<div id="jump5"><br><br>### 5、获取验证码<br><br>#### 请求URL：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://elm.cangdu.org/v1/captchas</span><br></pre></td></tr></table></figure><br><br>#### 示例：<br><br><br>#### 请求方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST</span><br></pre></td></tr></table></figure><br><br>#### 参数类型：<br><br>|参数|是否必选|类型|说明|<br>|:—–|:——-:|:—–|:—–|<br><br><br>#### 返回示例：<br><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  status: <span class="number">1</span>,</span><br><span class="line">  code: base64</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><br></div>
+
+<div id="jump6"><br><br>### 6、获取用户信息<br><br>#### 请求URL：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://elm.cangdu.org/v1/user</span><br></pre></td></tr></table></figure><br><br>#### 示例：<br><br><br>#### 请求方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET</span><br></pre></td></tr></table></figure><br><br>#### 参数类型：<br><br>|参数|是否必选|类型|说明|<br>|:—–|:——-:|:—–|:—–|<br><br><br>#### 返回示例：<br><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  username: <span class="string">"1"</span>,</span><br><span class="line">  user_id: <span class="number">2</span>,</span><br><span class="line">  id: <span class="number">2</span>,</span><br><span class="line">  point: <span class="number">0</span>,</span><br><span class="line">  mobile: <span class="string">""</span>,</span><br><span class="line">  is_mobile_valid: <span class="literal">true</span>,</span><br><span class="line">  is_email_valid: <span class="literal">false</span>,</span><br><span class="line">  is_active: <span class="number">1</span>,</span><br><span class="line">  gift_amount: <span class="number">3</span>,</span><br><span class="line">  email: <span class="string">""</span>,</span><br><span class="line">  delivery_card_expire_days: <span class="number">0</span>,</span><br><span class="line">  current_invoice_id: <span class="number">0</span>,</span><br><span class="line">  current_address_id: <span class="number">0</span>,</span><br><span class="line">  brand_member_new: <span class="number">0</span>,</span><br><span class="line">  balance: <span class="number">0</span>,</span><br><span class="line">  avatar: <span class="string">"/img/default/default.jpg"</span>,</span><br><span class="line">  __v: <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><br></div>
+
+<div id="jump7"><br><br>### 7、登录<br><br>#### 请求URL：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://elm.cangdu.org/v2/login</span><br></pre></td></tr></table></figure><br><br>#### 示例：<br><br><br>#### 请求方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST</span><br></pre></td></tr></table></figure><br><br>#### 参数类型：<br><br>|参数|是否必选|类型|说明|<br>|:—–|:——-:|:—–|:—–|<br>|username      |Y       |string   | 用户名 |<br>|password      |Y       |string  | 密码 |<br>|captcha_code      |Y       |string   | 验证码 |<br><br><br><br>#### 返回示例：<br><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  username: <span class="string">"1"</span>,</span><br><span class="line">  user_id: <span class="number">2</span>,</span><br><span class="line">  id: <span class="number">2</span>,</span><br><span class="line">  point: <span class="number">0</span>,</span><br><span class="line">  mobile: <span class="string">""</span>,</span><br><span class="line">  is_mobile_valid: <span class="literal">true</span>,</span><br><span class="line">  is_email_valid: <span class="literal">false</span>,</span><br><span class="line">  is_active: <span class="number">1</span>,</span><br><span class="line">  gift_amount: <span class="number">3</span>,</span><br><span class="line">  email: <span class="string">""</span>,</span><br><span class="line">  delivery_card_expire_days: <span class="number">0</span>,</span><br><span class="line">  current_invoice_id: <span class="number">0</span>,</span><br><span class="line">  current_address_id: <span class="number">0</span>,</span><br><span class="line">  brand_member_new: <span class="number">0</span>,</span><br><span class="line">  balance: <span class="number">0</span>,</span><br><span class="line">  avatar: <span class="string">"/img/default/default.jpg"</span>,</span><br><span class="line">  __v: <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><br></div>
+
+<div id="jump8"><br><br>### 8、退出<br><br>#### 请求URL：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://elm.cangdu.org/v2/signout</span><br></pre></td></tr></table></figure><br><br>#### 示例：<br><br><br>#### 请求方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET</span><br></pre></td></tr></table></figure><br><br>#### 参数类型：<br><br>|参数|是否必选|类型|说明|<br>|:—–|:——-:|:—–|:—–|<br><br><br>#### 返回示例：<br><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  status: <span class="number">1</span>,</span><br><span class="line">  message: <span class="string">'退出成功'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><br></div>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持分享(美文刊，技术刊，感悟刊)，您的支持将鼓励我继续创作</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById(&quot;QR&quot;); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/nopapername.github.io/images/wechatpay.jpg" alt="欧阳JH 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/nopapername.github.io/images/alipay.jpg" alt="欧阳JH 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/nopapername.github.io/tags/vue实战/" rel="tag"><i class="fa fa-tag"></i> vue实战</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/nopapername.github.io/2019/03/25/一些前端基础知识点自我总结！！！（实习面试准备）/" rel="next" title="一些前端基础知识点自我总结！！！（实习面试准备）">
+                <i class="fa fa-chevron-left"></i> 一些前端基础知识点自我总结！！！（实习面试准备）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/nopapername.github.io/2019/03/25/javascript基础面试算法题总结/" rel="prev" title="javascript基础面试算法题总结">
+                javascript基础面试算法题总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/nopapername.github.io/images/avatar.jpg" alt="欧阳JH">
+            
+              <p class="site-author-name" itemprop="name">欧阳JH</p>
+              <p class="site-description motion-element" itemprop="description">基于hexo构建的博客</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/nopapername.github.io/archives/">
+                
+                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/nopapername.github.io/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/nopapername.github.io/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/nopapername" title="GitHub &rarr; https://github.com/nopapername" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:1019825864@qq.com" title="E-Mail &rarr; mailto:1019825864@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/u/6020961867?topnav=1&wvr=6&topsug=1" title="Weibo &rarr; https://weibo.com/u/6020961867?topnav=1&wvr=6&topsug=1" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://nopapername.github.io/oyresume.github.io/" title="https://nopapername.github.io/oyresume.github.io/">myresume</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#技术栈"><span class="nav-number">2.</span> <span class="nav-text">技术栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目链接及预览"><span class="nav-number">3.</span> <span class="nav-text">项目链接及预览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于接口数据"><span class="nav-number">4.</span> <span class="nav-text">关于接口数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遇到的一些问题"><span class="nav-number">5.</span> <span class="nav-text">遇到的一些问题</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#接口列表："><span class="nav-number"></span> <span class="nav-text">接口列表：</span></a></li></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">欧阳JH</span>
+
+  
+
+  
+</div>
+
+<!-- 
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.0.0</div>
+ -->
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="/nopapername.github.io/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/nopapername.github.io/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/nopapername.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/nopapername.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/nopapername.github.io/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/nopapername.github.io/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/nopapername.github.io/js/src/schemes/muse.js?v=7.0.0"></script>
+
+
+
+  
+  <script src="/nopapername.github.io/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/nopapername.github.io/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/nopapername.github.io/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+  
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/nopapername.github.io/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
